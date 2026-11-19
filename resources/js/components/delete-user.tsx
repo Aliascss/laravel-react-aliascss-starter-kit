@@ -20,16 +20,16 @@ export default function DeleteUser() {
     const passwordInput = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="space-y-6">
+        <div className="__all--not(--last-child)-margin-bottom-24px">
             <Heading
                 variant="small"
                 title="Delete account"
                 description="Delete your account and all of its resources"
             />
-            <div className="space-y-4 rounded-lg border border-red-100 bg-red-50 p-4 dark:border-red-200/10 dark:bg-red-700/10">
-                <div className="relative space-y-0.5 text-red-600 dark:text-red-100">
-                    <p className="font-medium">Warning</p>
-                    <p className="text-sm">
+            <div className="__all--not(--last-child)-margin-bottom-16px br-10px border-width-1px border-color-redTheme5 bgc-redTheme2 p-16px">
+                <div className="position-relative __all--not(--last-child)-margin-bottom-2px c-redTheme11">
+                    <p className="fw-500">Warning</p>
+                    <p className="fs-14px lh-20px">
                         Please proceed with caution, this cannot be undone.
                     </p>
                 </div>
@@ -61,11 +61,11 @@ export default function DeleteUser() {
                             }}
                             onError={() => passwordInput.current?.focus()}
                             resetOnSuccess
-                            className="space-y-6"
+                            className="__all--not(--last-child)-margin-bottom-24px"
                         >
                             {({ resetAndClearErrors, processing, errors }) => (
                                 <>
-                                    <div className="grid gap-2">
+                                    <div className="d-grid g-8px">
                                         <Label
                                             htmlFor="password"
                                             className="sr-only"
@@ -84,7 +84,7 @@ export default function DeleteUser() {
                                         <InputError message={errors.password} />
                                     </div>
 
-                                    <DialogFooter className="gap-2">
+                                    <DialogFooter className="g-8px">
                                         <DialogClose asChild>
                                             <Button
                                                 variant="secondary"

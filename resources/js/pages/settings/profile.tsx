@@ -38,7 +38,7 @@ export default function Profile(
 
             <h1 className="sr-only">Profile settings</h1>
 
-            <div className="space-y-6">
+            <div className="__all--not(--last-child)-margin-bottom-24px">
                 <Heading
                     variant="small"
                     title="Profile"
@@ -50,16 +50,16 @@ export default function Profile(
                     options={{
                         preserveScroll: true,
                     }}
-                    className="space-y-6"
+                    className="__all--not(--last-child)-margin-bottom-24px"
                 >
                     {({ processing, errors }) => (
                         <>
-                            <div className="grid gap-2">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="name">Name</Label>
 
                                 <Input
                                     id="name"
-                                    className="mt-1 block w-full"
+                                    className="margin-top-4px d-block w-100%"
                                     defaultValue={auth.user.name}
                                     name="name"
                                     required
@@ -68,18 +68,18 @@ export default function Profile(
                                 />
 
                                 <InputError
-                                    className="mt-2"
+                                    className="margin-top-8px"
                                     message={errors.name}
                                 />
                             </div>
 
-                            <div className="grid gap-2">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="email">Email address</Label>
 
                                 <Input
                                     id="email"
                                     type="email"
-                                    className="mt-1 block w-full"
+                                    className="margin-top-4px d-block w-100%"
                                     defaultValue={auth.user.email}
                                     name="email"
                                     required
@@ -88,7 +88,7 @@ export default function Profile(
                                 />
 
                                 <InputError
-                                    className="mt-2"
+                                    className="margin-top-8px"
                                     message={errors.email}
                                 />
                             </div>
@@ -97,12 +97,12 @@ export default function Profile(
                             {mustVerifyEmail &&
                                 auth.user.email_verified_at === null && (
                                     <div>
-                                        <p className="-mt-4 text-sm text-muted-foreground">
+                                        <p className="margin-top--16px fs-14px lh-20px c-grayTheme11">
                                             Your email address is unverified.{' '}
                                             <Link
                                                 href={send()}
                                                 as="button"
-                                                className="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
+                                                className="c-grayTheme12 text-decoration-line-underline text-decoration-color-grayTheme7 text-underline-offset-4px transition(color_0.3s_ease-out,text-decoration-color_0.3s_ease-out) --hover-text-decoration-color-currentColor"
                                             >
                                                 Click here to re-send the
                                                 verification email.
@@ -111,7 +111,7 @@ export default function Profile(
 
                                         {status ===
                                             'verification-link-sent' && (
-                                            <div className="mt-2 text-sm font-medium text-green-600">
+                                            <div className="margin-top-8px fs-14px lh-20px fw-500 c-greenTheme11">
                                                 A new verification link has been
                                                 sent to your email address.
                                             </div>
@@ -120,7 +120,7 @@ export default function Profile(
                                 )}
                             {/* @end-chisel-email-verification */}
 
-                            <div className="flex items-center gap-4">
+                            <div className="d-flex aic g-16px">
                                 <Button
                                     disabled={processing}
                                     data-test="update-profile-button"

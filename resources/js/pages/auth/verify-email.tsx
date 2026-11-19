@@ -12,13 +12,13 @@ export default function VerifyEmail({ status }: { status?: string }) {
             <Head title="Email verification" />
 
             {status === 'verification-link-sent' && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
+                <div className="margin-bottom-16px text-align-center fs-14px lh-20px fw-500 c-greenTheme11">
                     A new verification link has been sent to the email address
                     you provided during registration.
                 </div>
             )}
 
-            <Form {...send.form()} className="space-y-6 text-center">
+            <Form {...send.form()} className="__all--not(--last-child)-margin-bottom-24px text-align-center">
                 {({ processing }) => (
                     <>
                         <Button disabled={processing} variant="secondary">
@@ -28,7 +28,7 @@ export default function VerifyEmail({ status }: { status?: string }) {
 
                         <TextLink
                             href={logout()}
-                            className="mx-auto block text-sm"
+                            className="margin-inline-auto d-block fs-14px lh-20px"
                         >
                             Log out
                         </TextLink>

@@ -20,24 +20,24 @@ export default function AuthCardLayout({
     description?: string;
 }>) {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-muted p-6 md:p-10">
-            <div className="flex w-full max-w-md flex-col gap-6">
+        <div className="d-flex mh-100svh flex-direction-column aic jcc g-24px bgc-grayTheme3 @xs-p-24px @sm-p-24px @md-p-40px">
+            <div className="d-flex w-100% xw-448px flex-direction-column g-24px">
                 <Link
                     href={home()}
-                    className="flex items-center gap-2 self-center font-medium"
+                    className="d-flex aic g-8px align-self-center fw-500"
                 >
-                    <div className="flex h-9 w-9 items-center justify-center">
-                        <AppLogoIcon className="size-9 fill-current text-black dark:text-white" />
+                    <div className="d-flex h-36px w-36px aic jcc">
+                        <AppLogoIcon className="w-36px h-36px fill-currentColor c-grayTheme12" />
                     </div>
                 </Link>
 
-                <div className="flex flex-col gap-6">
-                    <Card className="rounded-xl">
-                        <CardHeader className="px-10 pt-8 pb-0 text-center">
-                            <CardTitle className="text-xl">{title}</CardTitle>
+                <div className="d-flex flex-direction-column g-24px">
+                    <Card className="br-14px">
+                        <CardHeader className="padding(32px_40px_0) text-align-center">
+                            <CardTitle className="fs-20px lh-28px">{title}</CardTitle>
                             <CardDescription>{description}</CardDescription>
                         </CardHeader>
-                        <CardContent className="px-10 py-8">
+                        <CardContent className="padding(32px_40px)">
                             {children}
                         </CardContent>
                     </Card>

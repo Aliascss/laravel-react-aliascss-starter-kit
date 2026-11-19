@@ -58,7 +58,7 @@ export default function PasskeyRegistration({ onSuccess }: Props) {
 
     if (!isSupported) {
         return (
-            <div className="text-sm text-muted-foreground">
+            <div className="fs-14px lh-20px c-grayTheme11">
                 Passkeys are not supported in this browser.
             </div>
         );
@@ -75,9 +75,9 @@ export default function PasskeyRegistration({ onSuccess }: Props) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="space-y-4 rounded-lg border border-border bg-muted/50 p-4"
+            className="__all--not(--last-child)-margin-bottom-16px br-10px border-width-1px border-color-grayTheme6 bgc-grayTheme3/0.5 p-16px"
         >
-            <div className="grid gap-2">
+            <div className="d-grid g-8px">
                 <Label htmlFor="passkey-name">Passkey name</Label>
                 <Input
                     id="passkey-name"
@@ -85,17 +85,17 @@ export default function PasskeyRegistration({ onSuccess }: Props) {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g., MacBook Pro, iPhone"
-                    className="mt-1 block w-full border-foreground/20"
+                    className="margin-top-4px d-block w-100% border-color-grayTheme12/0.2"
                     autoFocus
                 />
-                <p className="text-xs text-muted-foreground">
+                <p className="fs-12px lh-16px c-grayTheme11">
                     A name helps you identify this passkey later.
                 </p>
             </div>
 
             {error && <InputError message={error} />}
 
-            <div className="flex gap-2">
+            <div className="d-flex g-8px">
                 <Button type="submit" disabled={isLoading || !name.trim()}>
                     {isLoading ? 'Registering...' : 'Register passkey'}
                 </Button>

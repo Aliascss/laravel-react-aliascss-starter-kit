@@ -10,7 +10,7 @@ export default function Appearance() {
 
             <h1 className="sr-only">Appearance settings</h1>
 
-            <div className="space-y-6">
+            <div className="__all--not(--last-child)-margin-bottom-24px">
                 <Heading
                     variant="small"
                     title="Appearance settings"

@@ -1,3 +1,5 @@
+import { acss } from '@/lib/utils';
+
 export default function Heading({
     title,
     description,
@@ -8,18 +10,18 @@ export default function Heading({
     variant?: 'default' | 'small';
 }) {
     return (
-        <header className={variant === 'small' ? '' : 'mb-8 space-y-0.5'}>
+        <header className={variant === 'small' ? '' : acss('margin-bottom-32px d-grid g-2px')}>
             <h2
                 className={
                     variant === 'small'
-                        ? 'mb-0.5 text-base font-medium'
-                        : 'text-xl font-semibold tracking-tight'
+                        ? acss('margin-bottom-2px fs-16px lh-24px fw-500')
+                        : acss('fs-20px lh-28px fw-600 les--0.025em')
                 }
             >
                 {title}
             </h2>
             {description && (
-                <p className="text-sm text-muted-foreground">{description}</p>
+                <p className="fs-14px lh-20px c-grayTheme11">{description}</p>
             )}
         </header>
     );

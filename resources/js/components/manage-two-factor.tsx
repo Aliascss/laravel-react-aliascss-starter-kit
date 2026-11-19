@@ -45,21 +45,21 @@ export default function ManageTwoFactor(props: Props) {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="__all--not(--last-child)-margin-bottom-24px">
             <Heading
                 variant="small"
                 title="Two-factor authentication"
                 description="Manage your two-factor authentication settings"
             />
             {twoFactorEnabled ? (
-                <div className="flex flex-col items-start justify-start space-y-4">
-                    <p className="text-sm text-muted-foreground">
+                <div className="d-flex flex-direction-column ai-flex-start justify-content-flex-start g-16px">
+                    <p className="fs-14px lh-20px c-grayTheme11">
                         You will be prompted for a secure, random pin during
                         login, which you can retrieve from the TOTP-supported
                         application on your phone.
                     </p>
 
-                    <div className="relative inline">
+                    <div className="position-relative d-inline">
                         <Form {...disable.form()}>
                             {({ processing }) => (
                                 <Button
@@ -80,8 +80,8 @@ export default function ManageTwoFactor(props: Props) {
                     />
                 </div>
             ) : (
-                <div className="flex flex-col items-start justify-start space-y-4">
-                    <p className="text-sm text-muted-foreground">
+                <div className="d-flex flex-direction-column ai-flex-start justify-content-flex-start g-16px">
+                    <p className="fs-14px lh-20px c-grayTheme11">
                         When you enable two-factor authentication, you will be
                         prompted for a secure pin during login. This pin can be
                         retrieved from a TOTP-supported application on your

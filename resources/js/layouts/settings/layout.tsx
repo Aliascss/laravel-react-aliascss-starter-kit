@@ -4,7 +4,7 @@ import Heading from '@/components/heading';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useCurrentUrl } from '@/hooks/use-current-url';
-import { cn, toUrl } from '@/lib/utils';
+import { acss, cn, toUrl } from '@/lib/utils';
 import { edit as editAppearance } from '@/routes/appearance';
 import { edit } from '@/routes/profile';
 import { edit as editSecurity } from '@/routes/security';
@@ -32,16 +32,16 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
     const { isCurrentOrParentUrl } = useCurrentUrl();
 
     return (
-        <div className="px-4 py-6">
+        <div className="padding(24px_16px)">
             <Heading
                 title="Settings"
                 description="Manage your profile and account settings"
             />
 
-            <div className="flex flex-col lg:flex-row lg:space-x-12">
-                <aside className="w-full max-w-xl lg:w-48">
+            <div className="d-flex @xs-flex-direction-column @sm-flex-direction-column @lg[flex-direction-row,g-48px]">
+                <aside className="xw-576px @xs-w-100% @sm-w-100% @lg-w-192px">
                     <nav
-                        className="flex flex-col space-y-1 space-x-0"
+                        className="d-flex flex-direction-column g-4px"
                         aria-label="Settings"
                     >
                         {sidebarNavItems.map((item, index) => (
@@ -50,13 +50,15 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                                 size="sm"
                                 variant="ghost"
                                 asChild
-                                className={cn('w-full justify-start', {
-                                    'bg-muted': isCurrentOrParentUrl(item.href),
-                                })}
+                                className={cn(
+                                    acss('w-100% justify-content-flex-start'),
+                                    isCurrentOrParentUrl(item.href) &&
+                                        acss('bgc-grayTheme3'),
+                                )}
                             >
                                 <Link href={item.href}>
                                     {item.icon && (
-                                        <item.icon className="h-4 w-4" />
+                                        <item.icon className="h-16px w-16px" />
                                     )}
                                     {item.title}
                                 </Link>
@@ -65,10 +67,10 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                     </nav>
                 </aside>
 
-                <Separator className="my-6 lg:hidden" />
+                <Separator className="margin-block-24px @lg-d-none" />
 
-                <div className="flex-1 md:max-w-2xl">
-                    <section className="max-w-xl space-y-12">
+                <div className="flex-1 mw-0 @md-xw-672px">
+                    <section className="xw-576px __all--not(--last-child)-margin-bottom-48px">
                         {children}
                     </section>
                 </div>

@@ -2,7 +2,7 @@ import { OTPInput, OTPInputContext } from "input-otp"
 import { Minus } from "lucide-react"
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { acss, cn } from "@/lib/utils"
 
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,
@@ -11,10 +11,10 @@ const InputOTP = React.forwardRef<
   <OTPInput
     ref={ref}
     containerClassName={cn(
-      "flex items-center gap-2 has-[:disabled]:opacity-50",
+      acss("@components[d-flex,aic,g-8px,--has(--disabled)-o-0.5]"),
       containerClassName
     )}
-    className={cn("disabled:cursor-not-allowed", className)}
+    className={cn(acss("@components[--disabled-cursor-not-allowed]"), className)}
     {...props}
   />
 ))
@@ -24,7 +24,7 @@ const InputOTPGroup = React.forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("flex items-center", className)} {...props} />
+  <div ref={ref} className={cn(acss("@components[d-flex,aic]"), className)} {...props} />
 ))
 InputOTPGroup.displayName = "InputOTPGroup"
 
@@ -38,17 +38,17 @@ const InputOTPSlot = React.forwardRef<
   return (
     <div
       ref={ref}
+      data-active={isActive ? "" : undefined}
       className={cn(
-        "relative flex h-9 w-9 items-center justify-center border-y border-r border-input text-sm shadow-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md",
-        isActive && "z-10 ring-1 ring-ring",
+        acss("@components[position-relative,d-flex,h-36px,w-36px,aic,jcc,border-style-solid,border-color-grayTheme6,border-width(1px_1px_1px_0),fs-14px,box-shadow(0_1px_2px_0_rgb(0_0_0_/_0.05)),transition(box-shadow_0.15s),--first-child[border-left-width-1px,border-radius(8px_0_0_8px)],--last-child-border-radius(0_8px_8px_0),[data-active][zi-10,box-shadow(0_0_0_1px_var(--x-ring-strong-color))]]"),
         className
       )}
       {...props}
     >
       {char}
       {hasFakeCaret && (
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <div className="h-4 w-px animate-caret-blink bg-foreground duration-1000" />
+        <div className="pointer-events-none position-absolute inset-0 d-flex aic jcc">
+          <div className="h-16px w-1px bgc-grayTheme12 animation(caret-blink_1.25s_ease-out_infinite)" />
         </div>
       )}
     </div>

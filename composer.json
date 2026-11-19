@@ -1,11 +1,15 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/react-starter-kit",
+    "name": "aliascss/laravel-react-aliascss-starter-kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Laravel + React + Inertia starter kit styled with AliasCSS.",
     "keywords": [
         "laravel",
-        "framework"
+        "framework",
+        "react",
+        "inertia",
+        "aliascss",
+        "starter-kit"
     ],
     "license": "MIT",
     "require": {

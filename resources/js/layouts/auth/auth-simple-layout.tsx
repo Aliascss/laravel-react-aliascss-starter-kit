@@ -9,23 +9,23 @@ export default function AuthSimpleLayout({
     description,
 }: AuthLayoutProps) {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
-            <div className="w-full max-w-sm">
-                <div className="flex flex-col gap-8">
-                    <div className="flex flex-col items-center gap-4">
+        <div className="d-flex mh-100svh flex-direction-column aic jcc g-24px bgc-grayTheme1 @xs-p-24px @sm-p-24px @md-p-40px">
+            <div className="w-100% xw-384px">
+                <div className="d-flex flex-direction-column g-32px">
+                    <div className="d-flex flex-direction-column aic g-16px">
                         <Link
                             href={home()}
-                            className="flex flex-col items-center gap-2 font-medium"
+                            className="d-flex flex-direction-column aic g-8px fw-500"
                         >
-                            <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md">
-                                <AppLogoIcon className="size-9 fill-current text-[var(--foreground)] dark:text-white" />
+                            <div className="margin-bottom-4px d-flex h-36px w-36px aic jcc br-8px">
+                                <AppLogoIcon className="w-36px h-36px fill-currentColor c-grayTheme12" />
                             </div>
                             <span className="sr-only">{title}</span>
                         </Link>
 
-                        <div className="space-y-2 text-center">
-                            <h1 className="text-xl font-medium">{title}</h1>
-                            <p className="text-center text-sm text-muted-foreground">
+                        <div className="d-grid g-8px text-align-center">
+                            <h1 className="fs-20px lh-28px fw-500">{title}</h1>
+                            <p className="text-align-center fs-14px lh-20px c-grayTheme11">
                                 {description}
                             </p>
                         </div>

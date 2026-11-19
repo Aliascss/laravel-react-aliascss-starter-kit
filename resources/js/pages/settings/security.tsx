@@ -32,7 +32,7 @@ export default function Security(props: Props) {
 
             <h1 className="sr-only">Security settings</h1>
 
-            <div className="space-y-6">
+            <div className="__all--not(--last-child)-margin-bottom-24px">
                 <Heading
                     variant="small"
                     title="Update password"
@@ -59,11 +59,11 @@ export default function Security(props: Props) {
                             currentPasswordInput.current?.focus();
                         }
                     }}
-                    className="space-y-6"
+                    className="__all--not(--last-child)-margin-bottom-24px"
                 >
                     {({ errors, processing }) => (
                         <>
-                            <div className="grid gap-2">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="current_password">
                                     Current password
                                 </Label>
@@ -72,7 +72,7 @@ export default function Security(props: Props) {
                                     id="current_password"
                                     ref={currentPasswordInput}
                                     name="current_password"
-                                    className="mt-1 block w-full"
+                                    className="margin-top-4px d-block w-100%"
                                     autoComplete="current-password"
                                     placeholder="Current password"
                                 />
@@ -80,14 +80,14 @@ export default function Security(props: Props) {
                                 <InputError message={errors.current_password} />
                             </div>
 
-                            <div className="grid gap-2">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="password">New password</Label>
 
                                 <PasswordInput
                                     id="password"
                                     ref={passwordInput}
                                     name="password"
-                                    className="mt-1 block w-full"
+                                    className="margin-top-4px d-block w-100%"
                                     autoComplete="new-password"
                                     placeholder="New password"
                                     passwordrules={props.passwordRules}
@@ -96,7 +96,7 @@ export default function Security(props: Props) {
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="grid gap-2">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="password_confirmation">
                                     Confirm password
                                 </Label>
@@ -104,7 +104,7 @@ export default function Security(props: Props) {
                                 <PasswordInput
                                     id="password_confirmation"
                                     name="password_confirmation"
-                                    className="mt-1 block w-full"
+                                    className="margin-top-4px d-block w-100%"
                                     autoComplete="new-password"
                                     placeholder="Confirm password"
                                     passwordrules={props.passwordRules}
@@ -115,7 +115,7 @@ export default function Security(props: Props) {
                                 />
                             </div>
 
-                            <div className="flex items-center gap-4">
+                            <div className="d-flex aic g-16px">
                                 <Button
                                     disabled={processing}
                                     data-test="update-password-button"

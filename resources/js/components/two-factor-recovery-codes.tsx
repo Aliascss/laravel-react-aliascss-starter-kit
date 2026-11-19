@@ -11,6 +11,7 @@ import {
     CardTitle,
 } from '@/components/ui/card';
 import { regenerateRecoveryCodes } from '@/routes/two-factor';
+import { acss } from '@/lib/utils';
 
 type Props = {
     recoveryCodesList: string[];
@@ -55,8 +56,8 @@ export default function TwoFactorRecoveryCodes({
     return (
         <Card>
             <CardHeader>
-                <CardTitle className="flex gap-3">
-                    <LockKeyhole className="size-4" aria-hidden="true" />
+                <CardTitle className="d-flex g-12px">
+                    <LockKeyhole className="w-16px h-16px" aria-hidden="true" />
                     2FA recovery codes
                 </CardTitle>
                 <CardDescription>
@@ -65,15 +66,15 @@ export default function TwoFactorRecoveryCodes({
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <div className="flex flex-col gap-3 select-none sm:flex-row sm:items-center sm:justify-between">
+                <div className="d-flex g-12px user-select-none @xs-flex-direction-column @sm[flex-direction-row,aic,jcsb]">
                     <Button
                         onClick={toggleCodesVisibility}
-                        className="w-fit"
+                        className="w-fit-content"
                         aria-expanded={codesAreVisible}
                         aria-controls="recovery-codes-section"
                     >
                         <RecoveryCodeIconComponent
-                            className="size-4"
+                            className="w-16px h-16px"
                             aria-hidden="true"
                         />
                         {codesAreVisible ? 'Hide' : 'View'} recovery codes
@@ -100,17 +101,22 @@ export default function TwoFactorRecoveryCodes({
                 </div>
                 <div
                     id="recovery-codes-section"
-                    className={`relative overflow-hidden transition-all duration-300 ${codesAreVisible ? 'h-auto opacity-100' : 'h-0 opacity-0'}`}
+                    className={
+                        acss('position-relative overflow-hidden transition(all_0.3s) ') +
+                        (codesAreVisible
+                            ? acss('h-auto o-1')
+                            : acss('h-0 o-0'))
+                    }
                     aria-hidden={!codesAreVisible}
                 >
-                    <div className="mt-3 space-y-3">
+                    <div className="margin-top-12px __all--not(--last-child)-margin-bottom-12px">
                         {errors?.length ? (
                             <AlertError errors={errors} />
                         ) : (
                             <>
                                 <div
                                     ref={codesSectionRef}
-                                    className="grid gap-1 rounded-lg bg-muted p-4 font-mono text-sm"
+                                    className="d-grid g-4px br-10px bgc-grayTheme3 p-16px ff(ui-monospace,SFMono-Regular,Menlo,Consolas,monospace) fs-14px lh-20px"
                                     role="list"
                                     aria-label="Recovery codes"
                                 >
@@ -119,14 +125,14 @@ export default function TwoFactorRecoveryCodes({
                                             <div
                                                 key={index}
                                                 role="listitem"
-                                                className="select-text"
+                                                className="user-select-text"
                                             >
                                                 {code}
                                             </div>
                                         ))
                                     ) : (
                                         <div
-                                            className="space-y-2"
+                                            className="d-grid g-8px"
                                             aria-label="Loading recovery codes"
                                         >
                                             {Array.from(
@@ -134,7 +140,7 @@ export default function TwoFactorRecoveryCodes({
                                                 (_, index) => (
                                                     <div
                                                         key={index}
-                                                        className="h-4 animate-pulse rounded bg-muted-foreground/20"
+                                                        className="h-16px br-4px bgc-grayTheme11/0.2 animation(pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite)"
                                                         aria-hidden="true"
                                                     />
                                                 ),
@@ -143,12 +149,12 @@ export default function TwoFactorRecoveryCodes({
                                     )}
                                 </div>
 
-                                <div className="text-xs text-muted-foreground select-none">
+                                <div className="fs-12px lh-16px c-grayTheme11 user-select-none">
                                     <p id="regenerate-warning">
                                         Each recovery code can be used once to
                                         access your account and will be removed
                                         after use. If you need more, click{' '}
-                                        <span className="font-bold">
+                                        <span className="fw-700">
                                             Regenerate codes
                                         </span>{' '}
                                         above.

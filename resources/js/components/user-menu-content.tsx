@@ -26,8 +26,8 @@ export function UserMenuContent({ user }: Props) {
 
     return (
         <>
-            <DropdownMenuLabel className="p-0 font-normal">
-                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+            <DropdownMenuLabel className="p-0 fw-400">
+                <div className="d-flex aic g-8px padding(6px_4px) text-align-left fs-14px lh-20px">
                     <UserInfo user={user} showEmail={true} />
                 </div>
             </DropdownMenuLabel>
@@ -35,12 +35,12 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuGroup>
                 <DropdownMenuItem asChild>
                     <Link
-                        className="block w-full cursor-pointer"
+                        className="d-flex w-100% cursor-pointer"
                         href={edit()}
                         prefetch
                         onClick={cleanup}
                     >
-                        <Settings className="mr-2" />
+                        <Settings />
                         Settings
                     </Link>
                 </DropdownMenuItem>
@@ -48,13 +48,13 @@ export function UserMenuContent({ user }: Props) {
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
                 <Link
-                    className="block w-full cursor-pointer"
+                    className="d-flex w-100% cursor-pointer"
                     href={logout()}
                     as="button"
                     onClick={handleLogout}
                     data-test="logout-button"
                 >
-                    <LogOut className="mr-2" />
+                    <LogOut />
                     Log out
                 </Link>
             </DropdownMenuItem>

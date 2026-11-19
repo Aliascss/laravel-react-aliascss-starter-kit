@@ -25,25 +25,25 @@ import { confirm } from '@/routes/two-factor';
 
 function GridScanIcon() {
     return (
-        <div className="mb-3 rounded-full border border-border bg-card p-0.5 shadow-sm">
-            <div className="relative overflow-hidden rounded-full border border-border bg-muted p-2.5">
-                <div className="absolute inset-0 grid grid-cols-5 opacity-50">
+        <div className="margin-bottom-12px br-999px border-width-1px border-color-grayTheme6 bgc-grayTheme1 p-2px box-shadow(0_1px_3px_0_rgb(0_0_0_/_0.1),0_1px_2px_-1px_rgb(0_0_0_/_0.1))">
+            <div className="position-relative overflow-hidden br-999px border-width-1px border-color-grayTheme6 bgc-grayTheme3 p-10px">
+                <div className="position-absolute inset-0 d-grid gtc(repeat(5,minmax(0,1fr))) o-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
                         <div
                             key={`col-${i + 1}`}
-                            className="border-r border-border last:border-r-0"
+                            className="border-right-width-1px border-color-grayTheme6 --last-child-border-right-width-0"
                         />
                     ))}
                 </div>
-                <div className="absolute inset-0 grid grid-rows-5 opacity-50">
+                <div className="position-absolute inset-0 d-grid grid-template-rows(repeat(5,minmax(0,1fr))) o-0.5">
                     {Array.from({ length: 5 }, (_, i) => (
                         <div
                             key={`row-${i + 1}`}
-                            className="border-b border-border last:border-b-0"
+                            className="border-bottom-width-1px border-color-grayTheme6 --last-child-border-bottom-width-0"
                         />
                     ))}
                 </div>
-                <ScanLine className="relative z-20 size-6 text-foreground" />
+                <ScanLine className="position-relative zi-20 w-24px h-24px c-grayTheme12" />
             </div>
         </div>
     );
@@ -72,12 +72,12 @@ function TwoFactorSetupStep({
                 <AlertError errors={errors} />
             ) : (
                 <>
-                    <div className="mx-auto flex max-w-md overflow-hidden">
-                        <div className="mx-auto aspect-square w-64 rounded-lg border border-border">
-                            <div className="z-10 flex h-full w-full items-center justify-center p-5">
+                    <div className="margin-inline-auto d-flex xw-448px overflow-hidden">
+                        <div className="margin-inline-auto aspect-ratio-1 w-256px br-10px border-width-1px border-color-grayTheme6">
+                            <div className="zi-10 d-flex h-100% w-100% aic jcc p-20px">
                                 {qrCodeSvg ? (
                                     <div
-                                        className="aspect-square w-full rounded-lg bg-white p-2 [&_svg]:size-full"
+                                        className="aspect-ratio-1 w-100% br-10px bgc-white p-8px _svg[w-100%,h-100%]"
                                         dangerouslySetInnerHTML={{
                                             __html: qrCodeSvg,
                                         }}
@@ -95,23 +95,23 @@ function TwoFactorSetupStep({
                         </div>
                     </div>
 
-                    <div className="flex w-full space-x-5">
-                        <Button className="w-full" onClick={onNextStep}>
+                    <div className="d-flex w-100% g-20px">
+                        <Button className="w-100%" onClick={onNextStep}>
                             {buttonText}
                         </Button>
                     </div>
 
-                    <div className="relative flex w-full items-center justify-center">
-                        <div className="absolute inset-0 top-1/2 h-px w-full bg-border" />
-                        <span className="relative bg-card px-2 py-1">
+                    <div className="position-relative d-flex w-100% aic jcc">
+                        <div className="position-absolute inset-0 t-50% h-1px w-100% bgc-grayTheme6" />
+                        <span className="position-relative bgc-grayTheme1 padding(4px_8px)">
                             or, enter the code manually
                         </span>
                     </div>
 
-                    <div className="flex w-full space-x-2">
-                        <div className="flex w-full items-stretch overflow-hidden rounded-xl border border-border">
+                    <div className="d-flex w-100% g-8px">
+                        <div className="d-flex w-100% ai-stretch overflow-hidden br-14px border-width-1px border-color-grayTheme6">
                             {!manualSetupKey ? (
-                                <div className="flex h-full w-full items-center justify-center bg-muted p-3">
+                                <div className="d-flex h-100% w-100% aic jcc bgc-grayTheme3 p-12px">
                                     <Spinner />
                                 </div>
                             ) : (
@@ -120,13 +120,13 @@ function TwoFactorSetupStep({
                                         type="text"
                                         readOnly
                                         value={manualSetupKey}
-                                        className="h-full w-full bg-background p-3 text-foreground outline-none"
+                                        className="h-100% w-100% bgc-grayTheme1 p-12px c-grayTheme12 outline-none"
                                     />
                                     <button
                                         onClick={() => copy(manualSetupKey)}
-                                        className="border-l border-border px-3 hover:bg-muted"
+                                        className="border-left-width-1px border-color-grayTheme6 padding-inline-12px --hover-bgc-grayTheme3"
                                     >
-                                        <IconComponent className="w-4" />
+                                        <IconComponent className="w-16px" />
                                     </button>
                                 </>
                             )}
@@ -171,9 +171,9 @@ function TwoFactorVerificationStep({
                 <>
                     <div
                         ref={pinInputContainerRef}
-                        className="relative w-full space-y-3"
+                        className="position-relative w-100% __all--not(--last-child)-margin-bottom-12px"
                     >
-                        <div className="flex w-full flex-col items-center space-y-3 py-2">
+                        <div className="d-flex w-100% flex-direction-column aic g-12px padding-block-8px">
                             <InputOTP
                                 id="otp"
                                 name="code"
@@ -202,7 +202,7 @@ function TwoFactorVerificationStep({
                             />
                         </div>
 
-                        <div className="flex w-full space-x-5">
+                        <div className="d-flex w-100% g-20px">
                             <Button
                                 type="button"
                                 variant="outline"
@@ -324,16 +324,16 @@ export default function TwoFactorSetupModal({
 
     return (
         <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
-            <DialogContent className="sm:max-w-md">
-                <DialogHeader className="flex items-center justify-center">
+            <DialogContent className="@sm-xw-448px">
+                <DialogHeader className="d-flex aic jcc">
                     <GridScanIcon />
                     <DialogTitle>{modalConfig.title}</DialogTitle>
-                    <DialogDescription className="text-center">
+                    <DialogDescription className="text-align-center">
                         {modalConfig.description}
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="flex flex-col items-center space-y-5">
+                <div className="d-flex flex-direction-column aic g-20px">
                     {showVerificationStep ? (
                         <TwoFactorVerificationStep
                             onClose={handleClose}

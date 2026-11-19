@@ -33,12 +33,12 @@ export default function Login({ status, canResetPassword }: Props) {
             <Form
                 {...store.form()}
                 resetOnSuccess={['password']}
-                className="flex flex-col gap-6"
+                className="d-flex flex-direction-column g-24px"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
-                            <div className="grid gap-2">
+                        <div className="d-grid g-24px">
+                            <div className="d-grid g-8px">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
@@ -53,13 +53,13 @@ export default function Login({ status, canResetPassword }: Props) {
                                 <InputError message={errors.email} />
                             </div>
 
-                            <div className="grid gap-2">
-                                <div className="flex items-center">
+                            <div className="d-grid g-8px">
+                                <div className="d-flex aic">
                                     <Label htmlFor="password">Password</Label>
                                     {canResetPassword && (
                                         <TextLink
                                             href={request()}
-                                            className="ml-auto text-sm"
+                                            className="margin-left-auto fs-14px lh-20px"
                                             tabIndex={5}
                                         >
                                             Forgot your password?
@@ -77,7 +77,7 @@ export default function Login({ status, canResetPassword }: Props) {
                                 <InputError message={errors.password} />
                             </div>
 
-                            <div className="flex items-center space-x-3">
+                            <div className="d-flex aic g-12px">
                                 <Checkbox
                                     id="remember"
                                     name="remember"
@@ -88,7 +88,7 @@ export default function Login({ status, canResetPassword }: Props) {
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="margin-top-16px w-100%"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
@@ -99,7 +99,7 @@ export default function Login({ status, canResetPassword }: Props) {
                         </div>
 
                         {/* @chisel-registration */}
-                        <div className="text-center text-sm text-muted-foreground">
+                        <div className="text-align-center fs-14px lh-20px c-grayTheme11">
                             Don't have an account?{' '}
                             <TextLink href={register()} tabIndex={5}>
                                 Sign up
@@ -111,7 +111,7 @@ export default function Login({ status, canResetPassword }: Props) {
             </Form>
 
             {status && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
+                <div className="margin-bottom-16px text-align-center fs-14px lh-20px fw-500 c-greenTheme11">
                     {status}
                 </div>
             )}

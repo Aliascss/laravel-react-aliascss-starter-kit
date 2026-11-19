@@ -1,0 +1,63 @@
+name: upstream
+
+# Once a week, compare laravel/react-starter-kit with the commit recorded in
+# the .upstream file. If the official kit has moved on, open an issue listing
+# what changed, so the changes can be merged in here.
+
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Compare with the official kit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          base="$(tr -d '[:space:]' < .upstream)"
+          head="$(gh api repos/laravel/react-starter-kit/commits/main --jq .sha)"
+
+          if [ "$base" = "$head" ]; then
+            echo "Up to date with laravel/react-starter-kit ($head)."
+            exit 0
+          fi
+
+          title="Upstream changes in laravel/react-starter-kit"
+
+          if [ -n "$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$title in:title" --json number --jq '.[0].number')" ]; then
+            echo "An upstream issue is already open."
+            exit 0
+          fi
+
+          {
+            echo "The official kit has new commits since \`${base:0:7}\`."
+            echo
+            echo "Compare: https://github.com/laravel/react-starter-kit/compare/${base}...${head}"
+            echo
+            echo "### Commits"
+            gh api "repos/laravel/react-starter-kit/compare/${base}...${head}" \
+              --jq '.commits[] | "- " + (.commit.message | split("\n")[0]) + " (" + .sha[0:7] + ")"'
+            echo
+            echo "### Files changed"
+            gh api "repos/laravel/react-starter-kit/compare/${base}...${head}" \
+              --jq '.files[] | "- `" + .filename + "`"'
+            echo
+            echo "After merging, put the new commit hash in \`.upstream\`:"
+            echo
+            echo "\`${head}\`"
+          } > body.md
+
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md

@@ -2,7 +2,7 @@ import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { XIcon } from "lucide-react"
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { acss, cn } from "@/lib/utils"
 
 function Dialog({
   ...props
@@ -36,7 +36,7 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80",
+        acss("@components[position-fixed,inset-0,zi-50,bgc-black/0.8,[data-state=open]-animation(fade-in_0.2s_ease-out),[data-state=closed]-animation(fade-out_0.2s_ease-in_forwards)] @motion-reduce-animation-none"),
         className
       )}
       {...props}
@@ -55,13 +55,13 @@ function DialogContent({
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-lg border p-6 shadow-lg duration-200 sm:max-w-lg",
+          acss("@components[position-fixed,t-50%,l-50%,zi-50,d-grid,w-100%,xw(calc(100%_-_32px)),translate(-50%_-50%),g-16px,br-10px,b-1px-solid-grayTheme6,bgc-grayTheme1,c-grayTheme12,p-24px,box-shadow(0_10px_15px_-3px_rgb(0_0_0_/_0.1),0_4px_6px_-4px_rgb(0_0_0_/_0.1)),[data-state=open]-animation(dialog-in_0.2s_ease-out),[data-state=closed]-animation(dialog-out_0.2s_ease-in_forwards)] @sm-xw-512px @motion-reduce-animation-none"),
           className
         )}
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+        <DialogPrimitive.Close className="position-absolute t-16px r-16px d-flex br-4px c-grayTheme12 o-0.7 transition(opacity_0.15s) --hover-o-1 --focus-visible[outline-2px-solid-grayTheme8,outline-offset-2px] --disabled-pointer-events-none [data-state=open][bgc-grayTheme3,c-grayTheme11] _svg[pointer-events-none,flex-shrink-0,w-16px,h-16px]">
           <XIcon />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>
@@ -74,7 +74,10 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+      className={cn(
+        acss("@components[d-flex,flex-direction-column,g-8px] @xs-text-align-center @sm-text-align-left"),
+        className
+      )}
       {...props}
     />
   )
@@ -85,7 +88,7 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="dialog-footer"
       className={cn(
-        "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        acss("@components[d-flex,g-8px] @xs-flex-direction-column-reverse @sm[flex-direction-row,justify-content-flex-end]"),
         className
       )}
       {...props}
@@ -100,7 +103,7 @@ function DialogTitle({
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn("text-lg leading-none font-semibold", className)}
+      className={cn(acss("@components[fs-18px,lh-1,fw-600]"), className)}
       {...props}
     />
   )
@@ -113,7 +116,7 @@ function DialogDescription({
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
-      className={cn("text-muted-foreground text-sm", className)}
+      className={cn(acss("@components[c-grayTheme11,fs-14px,lh-20px]"), className)}
       {...props}
     />
   )

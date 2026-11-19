@@ -3,7 +3,7 @@ import { Monitor, Moon, Sun } from 'lucide-react';
 import type { HTMLAttributes } from 'react';
 import type { Appearance } from '@/hooks/use-appearance';
 import { useAppearance } from '@/hooks/use-appearance';
-import { cn } from '@/lib/utils';
+import { acss, cn } from '@/lib/utils';
 
 export default function AppearanceToggleTab({
     className = '',
@@ -20,7 +20,7 @@ export default function AppearanceToggleTab({
     return (
         <div
             className={cn(
-                'inline-flex gap-1 rounded-lg bg-neutral-100 p-1 dark:bg-neutral-800',
+                acss('d-inline-flex g-4px br-10px bgc-grayTheme3 p-4px'),
                 className,
             )}
             {...props}
@@ -30,14 +30,14 @@ export default function AppearanceToggleTab({
                     key={value}
                     onClick={() => updateAppearance(value)}
                     className={cn(
-                        'flex items-center rounded-md px-3.5 py-1.5 transition-colors',
+                        acss('d-flex aic br-8px padding(6px_14px) transition(color_0.15s,background-color_0.15s)'),
                         appearance === value
-                            ? 'bg-white shadow-xs dark:bg-neutral-700 dark:text-neutral-100'
-                            : 'text-neutral-500 hover:bg-neutral-200/60 hover:text-black dark:text-neutral-400 dark:hover:bg-neutral-700/60',
+                            ? acss('bgc(light-dark(white,#404040)) c-grayTheme12 box-shadow(0_1px_2px_0_rgb(0_0_0_/_0.05))')
+                            : acss('c-grayTheme11 --hover[bgc-grayTheme5/0.6,c-grayTheme12]'),
                     )}
                 >
-                    <Icon className="-ml-1 h-4 w-4" />
-                    <span className="ml-1.5 text-sm">{label}</span>
+                    <Icon className="margin-left--4px h-16px w-16px" />
+                    <span className="margin-left-6px fs-14px lh-20px">{label}</span>
                 </button>
             ))}
         </div>

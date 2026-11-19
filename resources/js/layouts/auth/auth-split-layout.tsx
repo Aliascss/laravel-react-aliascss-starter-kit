@@ -11,28 +11,28 @@ export default function AuthSplitLayout({
     const { name } = usePage().props;
 
     return (
-        <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-                <div className="absolute inset-0 bg-zinc-900" />
+        <div className="position-relative d-grid h-100dvh aic jcc @xs-padding-inline-32px @sm-padding-inline-0 @lg[xw-none,gtc(repeat(2,minmax(0,1fr)))]">
+            <div className="position-relative h-100% flex-direction-column bgc-grayTheme3 p-40px c-white border-right(1px_solid_light-dark(transparent,#3a3a3a)) @xs-d-none @sm-d-none @lg-d-flex">
+                <div className="position-absolute inset-0 bgc-18181b" />
                 <Link
                     href={home()}
-                    className="relative z-20 flex items-center text-lg font-medium"
+                    className="position-relative zi-20 d-flex aic fs-18px lh-28px fw-500"
                 >
-                    <AppLogoIcon className="mr-2 size-8 fill-current text-white" />
+                    <AppLogoIcon className="margin-right-8px w-32px h-32px fill-currentColor c-white" />
                     {name}
                 </Link>
             </div>
-            <div className="w-full lg:p-8">
-                <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            <div className="w-100% @lg-p-32px">
+                <div className="margin-inline-auto d-flex flex-direction-column jcc g-24px @xs-w-100% @sm-w-350px">
                     <Link
                         href={home()}
-                        className="relative z-20 flex items-center justify-center lg:hidden"
+                        className="position-relative zi-20 aic jcc @xs-d-flex @sm-d-flex @lg-d-none"
                     >
-                        <AppLogoIcon className="h-10 fill-current text-black sm:h-12" />
+                        <AppLogoIcon className="fill-currentColor c-grayTheme12 @xs-h-40px @sm-h-48px" />
                     </Link>
-                    <div className="flex flex-col items-start gap-2 text-left sm:items-center sm:text-center">
-                        <h1 className="text-xl font-medium">{title}</h1>
-                        <p className="text-sm text-balance text-muted-foreground">
+                    <div className="d-flex flex-direction-column g-8px @xs[ai-flex-start,text-align-left] @sm[aic,text-align-center]">
+                        <h1 className="fs-20px lh-28px fw-500">{title}</h1>
+                        <p className="fs-14px lh-20px text-wrap-balance c-grayTheme11">
                             {description}
                         </p>
                     </div>

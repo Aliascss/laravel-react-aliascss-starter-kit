@@ -2,7 +2,7 @@ import * as CheckboxPrimitive from "@radix-ui/react-checkbox"
 import { CheckIcon } from "lucide-react"
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { acss, cn } from "@/lib/utils"
 
 function Checkbox({
   className,
@@ -12,16 +12,16 @@ function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer border-input data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        acss("@components[d-inline-flex,aic,jcc,w-16px,h-16px,flex-shrink-0,br-4px,b-1px-solid-grayTheme7,bgc-transparent,p-0,box-shadow(0_1px_2px_0_rgb(0_0_0_/_0.05)),outline-none,transition(box-shadow_0.15s),[data-state=checked][bgc-grayTheme12,c-grayTheme1,border-color-grayTheme12],--disabled[cursor-not-allowed,o-0.5],--focus-visible[border-color-grayTheme8,box-shadow(0_0_0_3px_var(--x-ring-color))],[aria-invalid=true][border-color-redTheme9,box-shadow(0_0_0_3px_var(--x-ring-danger-color))]]"),
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-current transition-none"
+        className="d-flex aic jcc c-currentColor"
       >
-        <CheckIcon className="size-3.5" />
+        <CheckIcon className="w-14px h-14px" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )

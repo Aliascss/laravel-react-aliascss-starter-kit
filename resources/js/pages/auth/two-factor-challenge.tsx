@@ -53,10 +53,10 @@ export default function TwoFactorChallenge() {
         <>
             <Head title="Two-factor authentication" />
 
-            <div className="space-y-6">
+            <div className="__all--not(--last-child)-margin-bottom-24px">
                 <Form
                     {...store.form()}
-                    className="space-y-4"
+                    className="__all--not(--last-child)-margin-bottom-16px"
                     resetOnError
                     resetOnSuccess={!showRecoveryInput}
                 >
@@ -76,8 +76,8 @@ export default function TwoFactorChallenge() {
                                     />
                                 </>
                             ) : (
-                                <div className="flex flex-col items-center justify-center space-y-3 text-center">
-                                    <div className="flex w-full items-center justify-center">
+                                <div className="d-flex flex-direction-column aic jcc g-12px text-align-center">
+                                    <div className="d-flex w-100% aic jcc">
                                         <InputOTP
                                             name="code"
                                             maxLength={OTP_MAX_LENGTH}
@@ -106,17 +106,17 @@ export default function TwoFactorChallenge() {
 
                             <Button
                                 type="submit"
-                                className="w-full"
+                                className="w-100%"
                                 disabled={processing}
                             >
                                 Continue
                             </Button>
 
-                            <div className="text-center text-sm text-muted-foreground">
+                            <div className="text-align-center fs-14px lh-20px c-grayTheme11">
                                 <span>or you can </span>
                                 <button
                                     type="button"
-                                    className="cursor-pointer text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
+                                    className="cursor-pointer c-grayTheme12 text-decoration-line-underline text-decoration-color-grayTheme7 text-underline-offset-4px transition(color_0.3s_ease-out,text-decoration-color_0.3s_ease-out) --hover-text-decoration-color-currentColor"
                                     onClick={() =>
                                         toggleRecoveryMode(clearErrors)
                                     }

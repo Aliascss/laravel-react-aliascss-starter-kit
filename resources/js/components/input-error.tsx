@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { cn } from '@/lib/utils';
+import { acss, cn } from '@/lib/utils';
 
 export default function InputError({
     message,
@@ -9,7 +9,7 @@ export default function InputError({
     return message ? (
         <p
             {...props}
-            className={cn('text-sm text-red-600 dark:text-red-400', className)}
+            className={cn(acss('fs-14px lh-20px c-redTheme11'), className)}
         >
             {message}
         </p>

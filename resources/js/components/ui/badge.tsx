@@ -1,37 +1,32 @@
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { acss, cn } from "@/lib/utils"
 
-const badgeVariants = cva(
-  "inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive transition-[color,box-shadow] overflow-hidden",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground [a&]:hover:bg-secondary/90",
-        destructive:
-          "border-transparent bg-destructive text-white [a&]:hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "text-foreground [a&]:hover:bg-accent [a&]:hover:text-accent-foreground",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
-)
+const BASE = acss("@components[d-inline-flex,aic,jcc,g-4px,w-fit-content,flex-shrink-0,overflow-hidden,white-space-nowrap,br-8px,border-width-1px,border-style-solid,padding(2px_8px),fs-12px,lh-16px,fw-500,transition(color_0.15s,box-shadow_0.15s),__svg[w-12px,h-12px,pointer-events-none],--focus-visible[border-color-grayTheme8,box-shadow(0_0_0_3px_var(--x-ring-color))],[aria-invalid=true][border-color-redTheme9,box-shadow(0_0_0_3px_var(--x-ring-danger-color))]]")
+
+const VARIANTS = {
+  default: acss("@components[border-color-transparent,bgc-grayTheme12,c-grayTheme1]"),
+  secondary: acss("@components[border-color-transparent,bgc-grayTheme3,c-grayTheme12]"),
+  destructive: acss("@components[border-color-transparent,bgc-redTheme9,c-white]"),
+  outline: acss("@components[border-color-grayTheme6,c-grayTheme12]"),
+} as const
+
+type BadgeVariant = keyof typeof VARIANTS
+
+function badgeVariants({ variant }: { variant?: BadgeVariant | null } = {}) {
+  return cn(BASE, VARIANTS[variant ?? "default"])
+}
 
 function Badge({
   className,
   variant,
   asChild = false,
   ...props
-}: React.ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: React.ComponentProps<"span"> & {
+  variant?: BadgeVariant | null
+  asChild?: boolean
+}) {
   const Comp = asChild ? Slot : "span"
 
   return (

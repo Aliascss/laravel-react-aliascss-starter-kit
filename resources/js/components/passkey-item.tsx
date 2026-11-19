@@ -26,27 +26,27 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
     };
 
     return (
-        <div className="flex items-center justify-between border-b p-4 last:border-b-0">
-            <div className="flex items-center gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-muted">
-                    <KeyRound className="h-5 w-5 text-muted-foreground" />
+        <div className="d-flex aic jcsb border-bottom-width-1px border-color-grayTheme6 p-16px --last-child-border-bottom-width-0">
+            <div className="d-flex aic g-16px">
+                <div className="d-flex h-40px w-40px flex-shrink-0 aic jcc br-14px bgc-grayTheme3">
+                    <KeyRound className="h-20px w-20px c-grayTheme11" />
                 </div>
-                <div className="space-y-1">
-                    <div className="flex items-center gap-2.5">
-                        <p className="font-medium tracking-tight">
+                <div className="d-grid g-4px">
+                    <div className="d-flex aic g-10px">
+                        <p className="fw-500 les--0.025em">
                             {passkey.name}
                         </p>
                         {passkey.authenticator && (
-                            <span className="inline-flex items-center gap-1 rounded-md bg-muted px-2 py-0.5 text-[11px] font-medium tracking-wide text-muted-foreground uppercase ring-1 ring-border ring-inset">
+                            <span className="d-inline-flex aic g-4px br-8px bgc-grayTheme3 padding(2px_8px) fs-11px fw-500 les-0.025em c-grayTheme11 text-transform-uppercase box-shadow(inset_0_0_0_1px_var(--x-border-color)) --x-border-color:grayTheme6">
                                 {passkey.authenticator}
                             </span>
                         )}
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="fs-14px lh-20px c-grayTheme11">
                         Added {passkey.created_at_diff}
                         {passkey.last_used_at_diff && (
                             <>
-                                <span className="mx-1 text-muted-foreground/50">
+                                <span className="margin-inline-4px c-grayTheme11/0.5">
                                     /
                                 </span>
                                 Last used {passkey.last_used_at_diff}
@@ -61,9 +61,9 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                     <Button
                         variant="ghost"
                         size="sm"
-                        className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+                        className="c-redTheme11 --hover[bgc-redTheme9/0.1,c-redTheme11]"
                     >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-16px w-16px" />
                         <span className="sr-only">Remove</span>
                     </Button>
                 </DialogTrigger>
@@ -74,7 +74,7 @@ export default function PasskeyItem({ passkey, onDelete }: Props) {
                         passkey? You will no longer be able to use it to sign
                         in.
                     </DialogDescription>
-                    <DialogFooter className="gap-2">
+                    <DialogFooter className="g-8px">
                         <DialogClose asChild>
                             <Button variant="secondary">Cancel</Button>
                         </DialogClose>

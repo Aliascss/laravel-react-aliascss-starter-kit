@@ -13,7 +13,7 @@ export function NavMain({ items }: { items: NavItem[] }) {
     const { isCurrentUrl } = useCurrentUrl();
 
     return (
-        <SidebarGroup className="px-2 py-0">
+        <SidebarGroup className="padding(0_8px)">
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
                 {items.map((item) => (

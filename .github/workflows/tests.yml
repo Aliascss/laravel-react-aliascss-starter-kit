@@ -34,5 +34,15 @@ jobs:
       - name: Setup Application
         run: composer setup
 
+      # `composer setup` has already built the frontend, which compiles the AliasCSS classes.
+      # This step compiles them once more with the CLI and fails on any class it can't compile.
+      - name: Check AliasCSS classes
+        run: |
+          npx aliascss --config 2>&1 | tee aliascss.log
+          if grep -q "can't compile" aliascss.log; then
+            echo "::error::AliasCSS found class names it can't compile (see the log above)."
+            exit 1
+          fi
+
       - name: Run CI Checks
         run: composer ci:check
